@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "471309170850",
+    "project_id": "navigationapp-578a0",
+    "storage_bucket": "navigationapp-578a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471309170850:android:862ccbad4b6dea6a9ffffb",
+        "android_client_info": {
+          "package_name": "com.example.android.firebaseui_login_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471309170850-cksb37ik0r0l0457tssb67lufv5sa6p5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.firebaseui_login_sample",
+            "certificate_hash": "7bbd98499ef3f7b69d7c59de42615fbf3e9d0b6d"
+          }
+        },
+        {
+          "client_id": "471309170850-p1qtu79rlqo70hc2pdli58458lfcolj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXbzN_h79Ohumtq8ndkgrOINugZyZaVJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471309170850-p1qtu79rlqo70hc2pdli58458lfcolj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
