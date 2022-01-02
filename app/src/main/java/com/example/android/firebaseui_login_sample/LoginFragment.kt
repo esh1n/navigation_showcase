@@ -50,7 +50,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentLoginBinding>(
@@ -67,10 +67,23 @@ class LoginFragment : Fragment() {
 
         navController = findNavController()
 
-        // TODO Handle back button actions by bringing the user back to the MainFragment.
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            navController.popBackStack(R.id.mainFragment, false)
+        }
 
-        // TODO Observe the authenticationState and navigate the user back to SettingsFragment when
-        //  they are successfully authenticated.
+        viewModel.authenticationState.observe(viewLifecycleOwner, { authenticationState ->
+            when (authenticationState) {
+                // Since our login flow is only one screen instead of multiple
+                // screens, we can utilize popBackStack(). If our login flow
+                // consisted of multiple screens, we would have to call
+                // popBackStack() multiple times.
+                LoginViewModel.AuthenticationState.AUTHENTICATED -> navController.popBackStack()
+                else -> Log.e(
+                    TAG,
+                    "Authentication state that doesn't require any UI change $authenticationState"
+                )
+            }
+        })
     }
 
     private fun launchSignInFlow() {

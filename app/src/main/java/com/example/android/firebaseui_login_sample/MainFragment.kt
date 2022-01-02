@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
@@ -49,10 +49,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeAuthenticationState()
 
-        // TODO set an onClickListener for settings_btn so that tapping the button will navigate the
-        //  user to customizeFragment. Don’t worry if you see unresolved errors as you
-        //  implementation action! If you see unresolved errors, you can recompile the app from the
-        //  Build menu to generate and use the new navigation actions you just created in the xml.
+        binding.settingsBtn.setOnClickListener {
+            val action = MainFragmentDirections.actionMainFragmentToSettingsFragment()
+            findNavController().navigate(action)
+        }
     }
 
     /**
@@ -63,7 +63,7 @@ class MainFragment : Fragment() {
     private fun observeAuthenticationState() {
         val factToDisplay = viewModel.getFactToDisplay(requireContext())
 
-        viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
+        viewModel.authenticationState.observe(viewLifecycleOwner, { authenticationState ->
             when (authenticationState) {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> {
                     binding.welcomeText.text = getFactWithPersonalization(factToDisplay)
